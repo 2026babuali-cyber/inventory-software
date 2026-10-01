@@ -1,0 +1,13 @@
+                 USER
+                  ↓
+        HTML + CSS + JavaScript
+                  ↓
+              REST API
+                  ↓
+           Python / FastAPI
+                  ↓
+       Accounting + Inventory
+                  ↓
+             Database
+                  ↓
+       SQLite → PostgreSQL
