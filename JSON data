@@ -1,0 +1,15 @@
+{
+    "invoice_no": "INV-0001",
+    "date": "2026-10-01",
+    "party_id": 1,
+    "items": [
+        {
+            "product_id": 101,
+            "product_name": "A4 Paper",
+            "quantity": 10,
+            "rate": 250,
+            "gst_rate": 18
+        }
+    ],
+    "payment_mode": "Credit"
+}
