@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inventory & Accounting Software</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            <span>IA</span>
+            <div>
+                <h2>AccountPro</h2>
+                <small>Inventory & Accounts</small>
+            </div>
+        </div>
+
+        <nav>
+
+            <a href="#" class="active" onclick="showPage('dashboard')">
+                🏠 Dashboard
+            </a>
+
+            <p class="menu-title">MASTERS</p>
+
+            <a href="#" onclick="showPage('party')">
+                👥 Party Master
+            </a>
+
+            <a href="#" onclick="showPage('product')">
+                📦 Product / Stock
+            </a>
+
+            <p class="menu-title">TRANSACTIONS</p>
+
+            <a href="#" onclick="showPage('purchase')">
+                🛒 Purchase
+            </a>
+
+            <a href="#" onclick="showPage('sales')">
+                💰 Sales
+            </a>
+
+            <a href="#" onclick="showPage('payment')">
+                💳 Payment
+            </a>
+
+            <a href="#" onclick="showPage('receipt')">
+                🧾 Receipt
+            </a>
+
+            <p class="menu-title">REPORTS</p>
+
+            <a href="#" onclick="showPage('stock')">
+                📊 Stock Register
+            </a>
+
+            <a href="#" onclick="showPage('ledger')">
+                📒 Party Ledger
+            </a>
+
+            <a href="#" onclick="showPage('reports')">
+                📈 Reports
+            </a>
+
+            <p class="menu-title">SYSTEM</p>
+
+            <a href="#">
+                ⚙️ Settings
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main class="main">
+
+        <header class="topbar">
+
+            <button class="menu-btn" onclick="toggleSidebar()">
+                ☰
+            </button>
+
+            <div>
+                <h3 id="pageTitle">Dashboard</h3>
+            </div>
+
+            <div class="user">
+                <div class="avatar">RA</div>
+                <span>Admin</span>
+            </div>
+
+        </header>
+
+
+        <section class="content">
+
+            <!-- Dashboard -->
+            <div id="dashboard" class="page active-page">
+
+                <div class="welcome">
+                    <h1>Dashboard</h1>
+                    <p>Inventory & Accounting Management</p>
+                </div>
+
+                <div class="cards">
+
+                    <div class="card">
+                        <div>
+                            <span>Total Sales</span>
+                            <h2>₹ 0.00</h2>
+                        </div>
+                        <div class="icon">₹</div>
+                    </div>
+
+                    <div class="card">
+                        <div>
+                            <span>Total Purchase</span>
+                            <h2>₹ 0.00</h2>
+                        </div>
+                        <div class="icon">🛒</div>
+                    </div>
+
+                    <div class="card">
+                        <div>
+                            <span>Receivable</span>
+                            <h2>₹ 0.00</h2>
+                        </div>
+                        <div class="icon">↗</div>
+                    </div>
+
+                    <div class="card">
+                        <div>
+                            <span>Payable</span>
+                            <h2>₹ 0.00</h2>
+                        </div>
+                        <div class="icon">↘</div>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <h3>Recent Transactions</h3>
+                            <button>View All</button>
+                        </div>
+
+                        <div class="table-container">
+
+                            <table>
+
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Type</th>
+                                        <th>Party</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="transactionTable">
+
+                                    <tr>
+                                        <td colspan="4" class="empty">
+                                            No transactions available
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+
+                        <div class="quick-actions">
+
+                            <button onclick="showPage('purchase')">
+                                + Purchase
+                            </button>
+
+                            <button onclick="showPage('sales')">
+                                + Sales
+                            </button>
+
+                            <button onclick="showPage('payment')">
+                                + Payment
+                            </button>
+
+                            <button onclick="showPage('receipt')">
+                                + Receipt
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Party -->
+            <div id="party" class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Party Master</h1>
+                        <p>Manage customers and suppliers</p>
+                    </div>
+
+                    <button class="primary" onclick="openModal('partyModal')">
+                        + Add Party
+                    </button>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Mobile</th>
+                                    <th>GSTIN</th>
+                                    <th>Address</th>
+                                    <th>Balance</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="partyTable">
+
+                                <tr>
+                                    <td colspan="5" class="empty">
+                                        No parties added
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product -->
+            <div id="product" class="page">
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Product / Stock Master</h1>
+                        <p>Manage inventory items</p>
+                    </div>
+
+                    <button class="primary">
+                        + Add Product
+                    </button>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Unit</th>
+                                    <th>Opening Stock</th>
+                                    <th>Purchase</th>
+                                    <th>Sales</th>
+                                    <th>Closing Stock</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td colspan="6" class="empty">
+                                        No products available
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Purchase -->
+            <div id="purchase" class="page">
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Purchase</h1>
+                        <p>Create purchase transactions</p>
+                    </div>
+
+                    <button class="primary">
+                        + New Purchase
+                    </button>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Invoice Number</label>
+                            <input type="text" id="purchaseInvoice">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Supplier</label>
+                            <select>
+                                <option>Select Supplier</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>GSTIN</label>
+                            <input type="text">
+                        </div>
+
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Qty</th>
+                                    <th>Rate</th>
+                                    <th>GST %</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <input type="text"
+                                               placeholder="Product name">
+                                    </td>
+
+                                    <td>
+                                        <input type="number"
+                                               value="1">
+                                    </td>
+
+                                    <td>
+                                        <input type="number"
+                                               value="0">
+                                    </td>
+
+                                    <td>
+                                        <input type="number"
+                                               value="18">
+                                    </td>
+
+                                    <td>₹ 0.00</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="total-box">
+                        <strong>Total: ₹ 0.00</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Sales -->
+            <div id="sales" class="page">
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Sales</h1>
+                        <p>Create sales invoices</p>
+                    </div>
+
+                    <button class="primary">
+                        + New Sale
+                    </button>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Invoice Number</label>
+                            <input type="text">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Customer</label>
+                            <select>
+                                <option>Select Customer</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>GSTIN</label>
+                            <input type="text">
+                        </div>
+
+                    </div>
+
+                    <div class="invoice-items">
+
+                        <h3>Invoice Items</h3>
+
+                        <div class="item-row">
+
+                            <input type="text"
+                                   placeholder="Product">
+
+                            <input type="number"
+                                   placeholder="Qty">
+
+                            <input type="number"
+                                   placeholder="Rate">
+
+                            <input type="number"
+                                   placeholder="GST %">
+
+                            <input type="text"
+                                   placeholder="Amount"
+                                   readonly>
+
+                        </div>
+
+                    </div>
+
+                    <div class="total-box">
+                        Total: ₹ 0.00
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Payment -->
+            <div id="payment" class="page">
+
+                <div class="page-header">
+                    <div>
+                        <h1>Payment</h1>
+                        <p>Record outgoing payments</p>
+                    </div>
+                </div>
+
+                <div class="panel">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Party</label>
+                            <input type="text">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Payment Mode</label>
+
+                            <select>
+                                <option>Cash</option>
+                                <option>Bank</option>
+                                <option>UPI</option>
+                                <option>Cheque</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <button class="primary">
+                        Save Payment
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Receipt -->
+            <div id="receipt" class="page">
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Receipt</h1>
+                        <p>Record incoming payments</p>
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Party</label>
+                            <input type="text">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mode</label>
+
+                            <select>
+                                <option>Cash</option>
+                                <option>Bank</option>
+                                <option>UPI</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <button class="primary">
+                        Save Receipt
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Stock -->
+            <div id="stock" class="page">
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Stock Register</h1>
+                        <p>Track stock movement</p>
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Product</th>
+                                    <th>Opening</th>
+                                    <th>Purchase</th>
+                                    <th>Sales</th>
+                                    <th>Closing</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td colspan="6" class="empty">
+                                        No stock transactions
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Ledger -->
+            <div id="ledger" class="page">
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Party Ledger</h1>
+                        <p>Customer and supplier ledger</p>
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>Party</label>
+
+                            <select>
+                                <option>Select Party</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>From Date</label>
+
+                            <input type="date">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>To Date</label>
+
+                            <input type="date">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Reports -->
+            <div id="reports" class="page">
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Reports</h1>
+                        <p>Business and accounting reports</p>
+                    </div>
+
+                </div>
+
+                <div class="report-grid">
+
+                    <div class="report-card">
+                        📊
+                        <h3>Sales Report</h3>
+                    </div>
+
+                    <div class="report-card">
+                        🛒
+                        <h3>Purchase Report</h3>
+                    </div>
+
+                    <div class="report-card">
+                        📦
+                        <h3>Stock Report</h3>
+                    </div>
+
+                    <div class="report-card">
+                        📒
+                        <h3>Ledger Report</h3>
+                    </div>
+
+                    <div class="report-card">
+                        💰
+                        <h3>Profit & Loss</h3>
+                    </div>
+
+                    <div class="report-card">
+                        🧾
+                        <h3>GST Report</h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Party Modal -->
+
+<div class="modal" id="partyModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Add Party</h2>
+
+            <button onclick="closeModal('partyModal')">
+                ×
+            </button>
+
+        </div>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Party Name</label>
+                <input id="partyName">
+            </div>
+
+            <div class="form-group">
+                <label>Mobile</label>
+                <input id="partyMobile">
+            </div>
+
+            <div class="form-group">
+                <label>GSTIN</label>
+                <input id="partyGST">
+            </div>
+
+            <div class="form-group">
+                <label>Opening Balance</label>
+                <input id="partyBalance"
+                       type="number"
+                       value="0">
+            </div>
+
+            <div class="form-group full">
+                <label>Address</label>
+                <textarea id="partyAddress"></textarea>
+            </div>
+
+        </div>
+
+        <button class="primary"
+                onclick="addParty()">
+            Save Party
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
